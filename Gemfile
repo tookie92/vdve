@@ -14,6 +14,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'simple_form'
 gem 'materialize-sass', '~> 0.97.7'
+gem "dragonfly"
+gem "devise"
+gem "devise_roles"
+gem "cancan"
 
 
 group :development, :test do
