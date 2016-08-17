@@ -1,23 +1,31 @@
 <% content_for :nav do %>
 <!--Navigation-->
- <div class="navbar-fixed">
-    <nav id="nav_f" class="default_color" role="navigation">
-        <div class="container">
-            <div class="nav-wrapper">
+<div class="navbar-fixed">
+   <nav id="nav_f" class="default_color" role="navigation">
+       <div class="container">
+           <div class="nav-wrapper">
             <a href="#" id="logo-container" class="brand-logo">Joseph Ikinda</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#intro">Service</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete%></li>
+                    <% else %>
+                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                    <% end %>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li><a href="#intro">Service</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/joashp/material-design-template" target="_blank">Download</a></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete%></li>
+                    <% else %>
+                    <li><%= link_to "Sign up", new_user_registration_path %></li>
+                    <% end %>
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
@@ -75,7 +83,7 @@
 <!--Work-->
 <div class="section scrollspy" id="work">
     <div class="container">
-        <h2 class="header text_b">Work <small><%= link_to "add a new work", works_path %></small> </h2>
+        <h2 class="header text_b">Work </h2><small><%= link_to "add a new work", works_path %></small>
         <div class="row">
           <% @works.each do |w| %>
             <div class="col s12 m4 l4">
